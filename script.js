@@ -40,25 +40,30 @@ const age = parseInt(prompt("Quanti anni hai?"));
 console.log('Age', age);
 
 //? FASE DI ELABORAZIONE
-//Calcolo del prezzo base del biglietto per km
-const baseTicket = kmNeeded * 0.21;
-console.log('Base Ticket', baseTicket)
+//! validation
+if (isNaN(kmNeeded) || isNaN(age)) {
+    alert('Non ha inserito dei numeri sui campi richiesti')
+} else {
+    //Calcolo del prezzo base del biglietto per km
+    const baseTicket = kmNeeded * 0.21;
+    console.log('Base Ticket', baseTicket)
 
-//Calcolo percentuale di sconto se minorenne oppure over 65
-let costumerTicket = baseTicket;
-//se minorenne
-if (age < 18) {
-    costumerTicket *= 0.8;
-    //se over 65
-} else if (age >= 65) {
-    costumerTicket *= 0.6;
+    //Calcolo percentuale di sconto se minorenne oppure over 65
+    let costumerTicket = baseTicket;
+    //se minorenne
+    if (age < 18) {
+        costumerTicket *= 0.8;
+        //se over 65
+    } else if (age >= 65) {
+        costumerTicket *= 0.6;
+    }
+
+    //aggiungo due decimali al prezzo del biglietto, e il valore euro
+    costumerTicket = costumerTicket.toFixed(2) + '€';
+    console.log('Ticket Price', costumerTicket)
+
+
+    //? FASE DI OUTPUT
+    //alert con il prezzo del biglietto
+    alert(`Grazie per averci scelto! Il prezzo del tuo biglietto è: ${costumerTicket}`)
 }
-
-//aggiungo due decimali al prezzo del biglietto, e il valore euro
-costumerTicket = costumerTicket.toFixed(2) + '€';
-console.log('Ticket Price', costumerTicket)
-
-
-//? FASE DI OUTPUT
-//alert con il prezzo del biglietto
-alert(`Grazie per averci scelto! Il prezzo del tuo biglietto è: ${costumerTicket}`)
